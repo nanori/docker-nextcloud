@@ -1,0 +1,23 @@
+web:
+    build: .
+    ports:
+      - "80:80"
+    links:
+      - db:mariadb
+    environment:
+      - UID=10200
+      - GID=10200
+    volumes:
+      - /data/nextcloud/data:/nextcloud/data:Z
+      - /data/nextcloud/config:/nextcloud/config:Z
+      - /data/nextcloud/apps:/nextcloud/apps:Z
+
+db:
+    image: mariadb:10
+    volumes:
+      - /data/nextcloud/db:/var/lib/mysql:Z
+    environment:
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_ROOT_PASSWORD=My_@wesome_password
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=My_@wesome_password
