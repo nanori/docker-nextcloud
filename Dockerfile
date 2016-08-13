@@ -60,7 +60,7 @@ COPY run.sh            /usr/local/bin/run.sh
 COPY cron              /etc/periodic/15min/nextcloud
 
 RUN chmod +x /usr/local/bin/run.sh /etc/periodic/15min/nextcloud \
- && chown -R /var/run/php-fpm.sock /var/lib/nginx
+ && chown -R nextcloud:nextcloud /var/run/php-fpm.sock /var/lib/nginx
 
 VOLUME /nextcloud/data /nextcloud/config /nextcloud/apps
 
